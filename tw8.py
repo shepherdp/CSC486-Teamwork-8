@@ -310,9 +310,23 @@ def get_influenced_neighbors(ic, node, numreps=20):
         ic.reset()
         ic.activate_nodes([node])
 
-def get_k_influential_nodes(ic, k):
+def get_k_influential_nodes_a(ic, k):
     """
-    Return the k most influential nodes in ic's graph
+    Return the k most influential nodes in ic's graph, based on the
+    function get_average_influence_set_size
+    :param ic: An independent cascade object
+    :param k: The number of nodes to find
+    :return: A set of the most influential nodes
+    """
+    
+    # TODO: Task 3
+    
+    pass
+
+def get_k_influential_nodes_b(ic, k):
+    """
+    Return the k most influential nodes in ic's graph, based on the
+    function get_influenced_neighbors
     :param ic: An independent cascade object
     :param k: The number of nodes to find
     :return: A set of the most influential nodes
