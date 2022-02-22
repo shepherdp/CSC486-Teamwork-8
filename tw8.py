@@ -1,6 +1,6 @@
 import networkx as nx
 import matplotlib.pyplot as plt
-from random import random
+from random import random, shuffle
 
 def union(list1, list2):
     """
@@ -69,6 +69,17 @@ def get_directed_small_world_graph(n, k, p):
         g.add_edge(u, v)
     del h
     return g
+
+def get_k_random_nodes(ic, k):
+    """
+    Return the k most influential nodes in ic's graph
+    :param ic: An independent cascade object
+    :param k: The number of nodes to find
+    :return: A set of the most influential nodes
+    """
+    nodes = list(range(ic.graph.number_of_nodes()))
+    shuffle(nodes)
+    return nodes[:k]
   
 def update_plot(fig, ax, pos, ic, isdone=False, speed='lo'):
     """
