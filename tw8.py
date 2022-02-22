@@ -332,7 +332,7 @@ def get_k_influential_nodes_b(ic, k):
     :return: A set of the most influential nodes
     """
     
-    # TODO: Task 3
+    # TODO: Task 4
     
     pass
 
