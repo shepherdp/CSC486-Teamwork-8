@@ -314,9 +314,8 @@ def get_k_influential_nodes(ic, k):
 def main():
 
     # STEP 1: Choose a graph to use for the Independent Cascade model
-
-    G = nx.erdos_renyi_graph(100, .05, directed=True)
-    # G = nx.scale_free_graph(100).reverse()
+    G = nx.scale_free_graph(100).reverse()
+    # G = nx.erdos_renyi_graph(100, .05, directed=True)
     # G = get_directed_small_world_graph(100, 4, .1)
     # G = get_directed_caveman_graph(10, 10, .1)
 
