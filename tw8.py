@@ -142,7 +142,7 @@ class ICModel():
     A class to carry out Independent Cascade diffusion
     """
 
-    def __init__(self, g, nodes, activation_prob):
+    def __init__(self, g, activation_prob):
         """
         Constructor for Independent Cascade model
         :param g: A networkx graph
@@ -160,7 +160,7 @@ class ICModel():
         self.edge_weights = {}
 
         # Store references to initial conditions
-        self.initial_nodes = nodes
+        self.initial_nodes = []
         self.initial_activation_prob = activation_prob
 
         # Set all nodes' and edges' active status, as well as activation
@@ -323,7 +323,7 @@ def main():
     # New IC model made on top of G, with no initially active nodes,
     # and a 20% chance that an active node will activate an inactive
     # neighbor.
-    ic = ICModel(G, [], .5)
+    ic = ICModel(G, .5)
 
     # STEP 2: Find and activate the most influential nodes
     k = 5
