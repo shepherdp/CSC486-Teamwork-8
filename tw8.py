@@ -81,7 +81,7 @@ def get_k_random_nodes(ic, k):
     shuffle(nodes)
     return nodes[:k]
   
-def update_plot(fig, ax, pos, ic, isdone=False, speed='lo'):
+def update_plot(fig, ax, pos, ic, speed='lo'):
     """
     Update the plot for run_simulation if animation is turned on
     :param fig: Matplotlib figure object
@@ -96,6 +96,8 @@ def update_plot(fig, ax, pos, ic, isdone=False, speed='lo'):
     # Clear anything off the current plot
     ax.clear()
     fig.canvas.flush_events()
+    
+    isdone = ic.is_done()
 
     # Calculate colors for all nodes
     colors = []
@@ -128,6 +130,8 @@ def run_simulation(ic, animate=False):
     :return: None
     """
 
+    ic.reset()
+    
     # Initialize fig, ax, plot
     # Create plot if desired
     fig, ax, pos = None, None, None
@@ -145,7 +149,7 @@ def run_simulation(ic, animate=False):
 
     # Plot final state of the network if desired
     if animate:
-        update_plot(fig, ax, pos, ic, isdone=True, speed='hi')
+        update_plot(fig, ax, pos, ic, speed='hi')
         plt.show()
 
 class ICModel():
@@ -290,6 +294,9 @@ def get_average_influence_set_size(ic, node, numreps=20):
     """
     
     # TODO: Task 1
+    # The loop below resets the graph for each repetition and then activates
+    # the node indicated.  You must fill in the rest of the code to store
+    # activation set sizes.
     
     for i in range(numreps):
         ic.reset()
@@ -305,6 +312,9 @@ def get_influenced_neighbors(ic, node, numreps=20):
     """
 
     # TODO: Task 2
+    # The loop below resets the graph for each repetition and then activates
+    # the node indicated.  You must fill in the rest of the code to store
+    # neighbor sets.
     
     for i in range(numreps):
         ic.reset()
@@ -351,11 +361,16 @@ def main():
 
     # STEP 2: Find and activate the most influential nodes
     k = 5
-    nodes = get_k_influential_nodes(ic, k)
+    nodes = get_k_random_nodes(ic, k)
     ic.activate_nodes(nodes)
 
     # STEP 3: Run the simulation and watch the network go!
     run_simulation(ic, animate=True)
+    
+    # TODO: Task 5
 
+    # TODO: Task 6
+    
+    # TODO: Task 7
 
 main()
