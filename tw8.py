@@ -228,6 +228,13 @@ class ICModel():
         """
         stats = [self.node_stats[key] for key in self.node_stats]
         return stats.count(True)
+    
+    def get_activated_nodes(self):
+        """
+        Get the indexes of all activated nodes.
+        :return: List of node indexes
+        """
+        return [i for i in range(self.graph.number_of_nodes() if self.node_stats[i])]
 
     def is_done(self):
         """
